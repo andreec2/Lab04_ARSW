@@ -5,16 +5,14 @@
  */
 package edu.eci.arsw.blueprints.services;
 
+import edu.eci.arsw.blueprints.filter.FilterBlueprints;
 import edu.eci.arsw.blueprints.model.Blueprint;
 import edu.eci.arsw.blueprints.model.Point;
 import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
 
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import edu.eci.arsw.blueprints.persistence.impl.Tuple;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +27,9 @@ public class BlueprintsServices {
    
     @Autowired
     BlueprintsPersistence bpp;
+
+    @Autowired
+    FilterBlueprints fpp;
     
     public void addNewBlueprint(Blueprint bp) throws BlueprintPersistenceException {
         bpp.saveBlueprint(bp);
@@ -62,6 +63,14 @@ public class BlueprintsServices {
     public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException{
         Set<Blueprint> authorBlueprints = bpp.getBlueprintsByAuthor(author);
         return authorBlueprints;
+    }
+
+    public Blueprint FilterSuprimePoints(int blueprint) throws BlueprintPersistenceException {
+        Set<Blueprint> authorBlueprints = bpp.getAllBlueprints();
+        List<Blueprint> myList = new ArrayList<>(authorBlueprints);
+        Blueprint blueprint1Filter = myList.get(blueprint);
+        fpp.filterBlueprint(blueprint1Filter);
+        return blueprint1Filter;
     }
     
 }
