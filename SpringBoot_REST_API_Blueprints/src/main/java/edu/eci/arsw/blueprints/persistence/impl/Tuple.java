@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Tuple<T1, T2> {
 
+    public T2 first;
     T1 o1;
     T2 o2;
 

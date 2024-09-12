@@ -10,6 +10,6 @@ public class main {
     public static void main(String a[]) throws BlueprintNotFoundException {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
         BlueprintsServices gc = ac.getBean(BlueprintsServices.class);
-        System.out.println(gc.getAllBlueprints());
+        System.out.println(gc.getBlueprint("_authorname_", "_bpname_ "));
     }
 }
