@@ -26,11 +26,11 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
     public InMemoryBlueprintPersistence() {
         //load stub data
         Point[] pts=new Point[]{new Point(140, 140),new Point(115, 115)};
+        Point[] points = new Point[]{new Point(10, 10), new Point(20, 20)};
         Blueprint bp=new Blueprint("_authorname_", "_bpname_ ",pts);
         Blueprint an=new Blueprint("andres","MyPlane", pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
         blueprints.put(new Tuple<>(an.getAuthor(),an.getName()), an);
-        
     }    
     
     @Override
@@ -71,10 +71,10 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
         return authorBlueprints;
     }
 
-
     @Override
     public Set<Blueprint> getAllBlueprints() {
         return new HashSet<>(blueprints.values());
     }
+
 
 }

@@ -10,9 +10,18 @@ import edu.eci.arsw.blueprints.model.Point;
 import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.persistence.impl.InMemoryBlueprintPersistence;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import edu.eci.arsw.blueprints.persistence.impl.Tuple;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+
 import static org.junit.Assert.*;
 
 /**
@@ -20,6 +29,9 @@ import static org.junit.Assert.*;
  * @author hcadavid
  */
 public class InMemoryPersistenceTest {
+
+    InMemoryBlueprintPersistence ibpp;
+
     
     @Test
     public void saveNewAndLoadTest() throws BlueprintPersistenceException, BlueprintNotFoundException{
@@ -65,8 +77,54 @@ public class InMemoryPersistenceTest {
         catch (BlueprintPersistenceException ex){
             
         }
-                
-        
+
+    }
+
+    @Test
+    public void shouldGetBlueprint() throws BlueprintNotFoundException, BlueprintPersistenceException {
+        ibpp = new InMemoryBlueprintPersistence();
+
+        // Verificar que el blueprint que debería existir se puede recuperar
+        Blueprint expectedBlueprint = new Blueprint("John", "HousePlan", new Point[]{new Point(10, 10), new Point(20, 20)});
+
+        // Guardar el blueprint en la instancia de prueba
+        ibpp.saveBlueprint(expectedBlueprint);
+
+        // Obtener el blueprint
+        Blueprint retrievedBlueprint = ibpp.getBlueprint("John", "HousePlan");
+
+        // Verificar que el blueprint recuperado es el esperado
+        assertEquals("El blueprint recuperado debería ser igual al esperado", expectedBlueprint, retrievedBlueprint);
+    }
+
+    @Test
+    public void shouldGetBlueprintsByAuthor() throws BlueprintPersistenceException, BlueprintNotFoundException {
+        ibpp = new InMemoryBlueprintPersistence();
+        Set<Blueprint> authorBlueprints = new HashSet<>();
+
+
+        // Verificar que el blueprint que debería existir se puede recuperar
+        Blueprint expectedBlueprint = new Blueprint("John", "HousePlan", new Point[]{new Point(10, 10), new Point(20, 20)});
+        authorBlueprints.add(expectedBlueprint);
+
+        // Guardar el blueprint en la instancia de prueba
+        ibpp.saveBlueprint(expectedBlueprint);
+
+        assertEquals("La lista de blueprint guardado debe ser igual a la del autpr",authorBlueprints, ibpp.getBlueprintsByAuthor("John"));
+
+    }
+
+    @Test
+    public void shouldGetAllBlueprints() throws BlueprintPersistenceException {
+        ibpp = new InMemoryBlueprintPersistence();
+
+        Blueprint expectedBlueprint = new Blueprint("John", "HousePlan", new Point[]{new Point(10, 10), new Point(20, 20)});
+
+        //Agregar el el blueprint a la instancia de prueba
+        ibpp.saveBlueprint(expectedBlueprint);
+
+        assertEquals(3, ibpp.getAllBlueprints().size());
+
     }
 
 
