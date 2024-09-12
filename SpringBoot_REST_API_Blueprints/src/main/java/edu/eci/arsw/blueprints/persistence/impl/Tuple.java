@@ -4,29 +4,27 @@ import java.util.Objects;
 
 public class Tuple<T1, T2> {
 
-    public T2 first;
-    T1 o1;
-    T2 o2;
+    public T1 first;
+    public T2 second;
 
-    public Tuple(T1 o1, T2 o2) {
-        super();
-        this.o1 = o1;
-        this.o2 = o2;
+    public Tuple(T1 first, T2 second) {
+        this.first = first;
+        this.second = second;
     }
 
     public T1 getElem1() {
-        return o1;
+        return first;  // Retorna el primer elemento
     }
 
     public T2 getElem2() {
-        return o2;
+        return second; // Retorna el segundo elemento
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.o1);
-        hash = 17 * hash + Objects.hashCode(this.o2);
+        hash = 17 * hash + Objects.hashCode(this.first);
+        hash = 17 * hash + Objects.hashCode(this.second);
         return hash;
     }
 
@@ -42,14 +40,12 @@ public class Tuple<T1, T2> {
             return false;
         }
         final Tuple<?, ?> other = (Tuple<?, ?>) obj;
-        if (!Objects.equals(this.o1, other.o1)) {
+        if (!Objects.equals(this.first, other.first)) {
             return false;
         }
-        if (!Objects.equals(this.o2, other.o2)) {
+        if (!Objects.equals(this.second, other.second)) {
             return false;
         }
         return true;
     }
-    
-    
 }

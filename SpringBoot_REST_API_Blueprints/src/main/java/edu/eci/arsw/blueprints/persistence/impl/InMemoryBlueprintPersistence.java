@@ -27,7 +27,9 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
         //load stub data
         Point[] pts=new Point[]{new Point(140, 140),new Point(115, 115)};
         Blueprint bp=new Blueprint("_authorname_", "_bpname_ ",pts);
+        Blueprint an=new Blueprint("andres","MyPlane", pts);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
+        blueprints.put(new Tuple<>(an.getAuthor(),an.getName()), an);
         
     }    
     
@@ -57,7 +59,7 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
 
         // Recorrer el Map buscando los Blueprints del autor
         for (Map.Entry<Tuple<String, String>, Blueprint> entry : blueprints.entrySet()) {
-            if (entry.getKey().first.equals(author)) {
+            if (entry.getKey() != null && entry.getKey().first != null && entry.getKey().first.equals(author)) {
                 authorBlueprints.add(entry.getValue());
             }
         }
@@ -68,6 +70,7 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
 
         return authorBlueprints;
     }
+
 
     @Override
     public Set<Blueprint> getAllBlueprints() {
