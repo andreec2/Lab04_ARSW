@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+
 public class FilterSuprimePoints implements FilterBlueprints{
 
     public FilterSuprimePoints(){

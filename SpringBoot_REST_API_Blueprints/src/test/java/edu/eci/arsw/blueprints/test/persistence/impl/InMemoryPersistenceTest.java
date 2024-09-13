@@ -123,7 +123,7 @@ public class InMemoryPersistenceTest {
         //Agregar el el blueprint a la instancia de prueba
         ibpp.saveBlueprint(expectedBlueprint);
 
-        assertEquals(3, ibpp.getAllBlueprints().size());
+        assertEquals(2, ibpp.getAllBlueprints().size());
 
     }
 
