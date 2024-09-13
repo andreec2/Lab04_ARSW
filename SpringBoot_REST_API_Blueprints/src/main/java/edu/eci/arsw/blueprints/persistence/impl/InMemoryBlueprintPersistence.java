@@ -25,7 +25,7 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
 
     public InMemoryBlueprintPersistence() {
         //load stub data
-        Point[] pts=new Point[]{new Point(140, 140),new Point(115, 115),new Point(115, 115)};
+        Point[] pts=new Point[]{new Point(140, 140),new Point(115, 115),new Point(115, 115), new Point(140, 140)};
         Point[] points = new Point[]{new Point(10, 10), new Point(20, 20)};
         Blueprint bp=new Blueprint("_authorname_", "_bpname_ ",pts);
         //Blueprint an=new Blueprint("andres","MyPlane", pts);
