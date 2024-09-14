@@ -29,10 +29,13 @@ El proyecto se organiza en dos módulos principales:
    - **Paquete `edu.eci.arsw.blueprints.services`**: Servicios para gestionar los planos arquitectónicos.
    - **Paquete `edu.eci.arsw.blueprints.ui`**: Clase principal para ejecutar la aplicación.
    - **Paquete `edu.eci.arsw.blueprints.test.persistence.impl`**: Pruebas unitarias para la persistencia y los filtros.
+   - ![image](https://github.com/user-attachments/assets/10913919-a49e-4e36-a30e-c94d8d7df375)
+
 
 2. **Módulo 2: Proyecto Principal**
    - **Paquete `edu.eci.arsw.blueprints.services`**: Servicios para la aplicación de análisis de textos.
    - **Paquete `edu.eci.arsw.blueprints.persistence`**: Interfaces y excepciones para la persistencia en la aplicación de análisis de textos.
+   - ![image](https://github.com/user-attachments/assets/259aa611-2334-4e78-adc6-d1dfa651cbd5)
 
 ## Configuración
 
@@ -57,6 +60,15 @@ El proyecto se organiza en dos módulos principales:
 ## Pruebas
 
 Las pruebas unitarias están implementadas en el paquete `edu.eci.arsw.blueprints.test.persistence.impl`. Puedes ejecutarlas utilizando Maven:
+
+PRUEBAS DE fILTERBLUEPRINTSTEST:
+
+![image](https://github.com/user-attachments/assets/cec2131e-64f2-4a2b-b9c0-26c28e12cde6)
+
+PRUEBA DE INMEMORYPERSISTENCETEST:
+
+![image](https://github.com/user-attachments/assets/eeb83a01-58d2-41fe-896f-2bcb8375908b)
+
 
 ```bash
 mvn test
