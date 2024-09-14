@@ -15,7 +15,7 @@ El laboratorio se centra en dos aspectos principales:
 - Java 11 o superior
 - Spring Framework
 - JUnit para pruebas
-- Maven para la gestión de dependencias
+- Maven 3.8.6 o superior para la gestión de dependencias
 
 ## Estructura del Proyecto
 
@@ -72,3 +72,9 @@ PRUEBA DE INMEMORYPERSISTENCETEST:
 
 ```bash
 mvn test
+```
+##  Integrantes
+
+Juan Daniel Murcia
+Juan David Parroquiano
+Andres Felipe Montes
